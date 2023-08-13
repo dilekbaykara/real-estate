@@ -1,18 +1,30 @@
 import { Component } from '@angular/core';
+import { HomeComponent } from './home/home.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  template: `<h1>Hello world!</h1>`,
-
+  standalone: true,
+  imports: [HomeComponent, RouterLink, RouterOutlet],
+  template: `
+    <main>
+      <a [routerLink]="['/']">
+        <header class="brand-name">
+          <img
+            class="brand-logo"
+            src="/assets/logo.svg"
+            alt="logo"
+            aria-hidden="true"
+          />
+        </header>
+      </a>
+      <section class="content">
+        <router-outlet></router-outlet>
+      </section>
+    </main>
+  `,
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Real Estate App';
-}
-function useState(arg0: never[]): [any, any] {
-  throw new Error('Function not implemented.');
-}
-
-function useEffect(arg0: () => void, arg1: never[]) {
-  throw new Error('Function not implemented.');
+  title = 'homes';
 }
